@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="declaracao_importacao_view_tree" model="ir.ui.view">
+    <field name="name">declaracao.importacao.tree</field>
+    <field name="model">declaracao.importacao</field>
+    <field name="arch" type="xml">
+      <tree string="Declaração Importação" default_order="date_register desc, name">
+        <field name="name" required="1"/>
+        <field name="date_register"/>
+        <field name="seller_id" />
+        <field name="freight_total" />
+        <field name="insurance_total" />
+        <field name="amount_total" />
+      </tree>
+    </field>
+  </record>
+
+
+
+
+
+
+  <record id="declaracao_importacao_view_form" model="ir.ui.view">
+    <field name="name">declaracao.importacao.form</field>
+    <field name="model">declaracao.importacao</field>
+    <field name="arch" type="xml">
+      <form string="Declaração Importação">
+        <sheet>
+          <div class="oe_title">
+            <h1>
+              <field name="name" required="1"/>
+            </h1>
+          </div>
+          <group>
+            <group>
+              <field name="seller_id" />
+              <field name="date_register" />
+              <field name="date_picking" />
+            </group>
+            <group>
+              <field name="gross_weight_total" />
+              <field name="net_weight_total" />
+            </group>
+            <group>
+              <div>
+                <label for="currency_id"  class="oe_inline" />
+                <span class="oe_inline" />
+                <field name="currency_id"  class="oe_inline" />
+                <span class="oe_inline" />
+                <field name="currency_fee"  class="oe_inline" />
+              </div>
+            </group>
+            <group>
+              <field name="freight_currency_id" />
+              <field name="insurance_currency_id" />
+            </group>
+          </group>
+        <notebook>
+          <page string="Produtos">
+              <field name="product_line_ids" nolabel="1" >
+                <tree editable="bottom">
+                  <field name="product_id" />
+                  <field name="name" />
+                  <field name="quantity" />
+                  <field name="currency_id" invisible="1" />
+                  <field name="price_unit" />
+                  <field name="cost" />
+                  <field name="price_subtotal" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                </tree>
+              </field>
+          </page>
+        </notebook>
+        <group>
+          <group class="oe_subtotal_footer oe_right">
+            <field name="amount_subtotal" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            <field name="freight_total" widget="monetary" options="{'currency_field': 'freight_currency_id'}"/>
+            <field name="insurance_total" widget="monetary" options="{'currency_field': 'insurance_currency_id'}"/>
+            <div class="oe_subtotal_footer_separator oe_inline">
+                <label for="amount_total" widget="monetary" options="{'currency_field': 'currency_id'}" />
+            </div>
+            <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+        </group>
+        </group>
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+
+
+
+
+
+  <record id="declaracao_importacao_action_form" model="ir.actions.act_window">
+    <field name="name">Declaração Importação</field>
+    <field name="res_model">declaracao.importacao</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        <b>Registre aqui suas declarações de importação.</b>
+      </p>
+      <p>
+        <i>Você pode importar da DI em formato de xml.</i>
+      </p>
+    </field>
+  </record>
+
+
+
+
+
+  <!-- parent="purchase.menu_purchase_control" -->
+ <menuitem id="menu_root_di"
+    name="Declaração de Importação"
+    web_icon="declaracao_importacao,static/description/icon.png"
+    sequence="1"/>
+
+ <menuitem id="menu_declaracao_importacao"
+  name="Declaração Importação (DI)"
+  parent="menu_root_di"
+  action="declaracao_importacao_action_form"
+  sequence="3"/>
+
+
+
+</odoo>
