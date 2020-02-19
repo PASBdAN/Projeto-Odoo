@@ -1,45 +1,42 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
 <record id="catalogo_equipamento_tree" model="ir.ui.view">
   <field name="name">catalogo.equipamento.tree</field>
   <field name="model">catalogo.equipamento</field>
   <field name="arch" type="xml">
-    <tree string="Catálogo do Equipamento" default_order="modelo">
+    <tree string="Catálogo do Equipamento" >
       <field name="name" required="1"/>
     </tree>
   </field>
 </record>
-
-
 
 <record id="catalogo_equipamento_form" model="ir.ui.view">
   <field name="name">catalogo.equipamento.form</field>
   <field name="model">catalogo.equipamento</field>
   <field name="arch" type="xml">
     <form string="Catálogo do Equipamento" modifiers="{}">
-      <sheet modifiers="{}">
+      <sheet >
           <div class="oe_title">
             <h1>
               <field name="name" required="1"/>
             </h1>
           </div>
-      <notebook modifiers="{}">
-        <page string="Componente" modifiers="{}">
-            <field name="componente_line_ids" nolabel="1" modifiers="{}">
-              <tree editable="bottom" modifiers="{}">
-                <field name="componente_id" />
-                <field name="propriedade_id" />
-                <field name="descricao_id" />
-              </tree>
-            </field>
-        </page>
-      </notebook>
-    </sheet>
+          <notebook modifiers="{}">
+            <page string="Componente" modifiers="{}">
+                <field name="componente_line_ids" nolabel="1" modifiers="{}">
+                  <tree editable="bottom" >
+                    <field name="componente_id" />
+                    <field name="propriedade_id" />
+                    <field name="descricao_id" />
+                  </tree>
+                </field>
+            </page>
+          </notebook>
+        </sheet>
     </form>
   </field>
 </record>
-
 
 <record id="catalogo_equipamento_action_form" model="ir.actions.act_window">
   <field name="name">Catálogo do Equipamento</field>
@@ -52,12 +49,10 @@
   </field>
 </record>
 
-
 <menuitem id="menu_catalogo_equipamento"
-name="Catálogo do Equipamento"
-parent="menu_root_di"
-action="catalogo_equipamento_action_form"
-sequence="4"/>
-
+          name="Catálogo do Equipamento"
+          parent="purchase.menu_procurement_management"
+          action="catalogo_equipamento_action_form"
+          sequence="4"/>
 
 </odoo>

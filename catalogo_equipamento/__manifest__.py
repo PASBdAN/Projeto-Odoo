@@ -12,7 +12,7 @@
     'contributors': [
         'Andrea Monicque dos Santos Silva'
     ],
-    'depends': ['stock', 'declaracao_importacao'],
+    'depends': ['stock'],
     'data': [
         'views/catalogo_equipamento.xml',
         'security/ir.model.access.csv'],
