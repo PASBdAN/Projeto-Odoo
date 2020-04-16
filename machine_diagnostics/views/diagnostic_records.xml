@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+  <record id="diagnostic_records_view_tree" editable="bottom" model="ir.ui.view">
+    <field name="name">diagnostic.records.tree</field>
+    <field name="model">diagnostic.records</field>
+    <field name="arch" type="xml">
+      <tree string="Registros de Diagnósticos" default_order="diagrec_last_update desc, diagrec_serial_number">
+        <field name="diagrec_serial_number" widget="handle"/>
+        <field name="name" required="1" />
+        <field name="diagrec_component" />
+        <field name="diagrec_description" />
+        <field name="diagrec_last_change" />
+        <field name="diagrec_last_check" />
+        <field name="diagrec_product" />
+      </tree>
+    </field>
+  </record>
+
+
+  <record id="diagnostic_records_action_form" model="ir.actions.act_window">
+    <field name="name">Registros de Diagnósticos</field>
+    <field name="res_model">diagnostic.records</field>
+    <field name="view_mode">tree</field>
+    <field name="help" type="html"></field>
+  </record>
+
+
+<menuitem id="menu_diagnostic_records"
+  name="Registros de Diagnósticos"
+  parent="menu_root_machine_diagnostics"
+  action="diagnostic_records_action_form"
+  sequence="3"/>
+
+
+</odoo>
