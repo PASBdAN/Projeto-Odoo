@@ -6,7 +6,7 @@
     <field name="name">diagnostic.records.tree</field>
     <field name="model">diagnostic.records</field>
     <field name="arch" type="xml">
-      <tree string="Registros de Diagnósticos" default_order="diagrec_last_update desc, diagrec_serial_number">
+      <tree string="Registros de Diagnósticos" default_order="diagrec_last_check desc, diagrec_serial_number">
         <field name="diagrec_serial_number" widget="handle"/>
         <field name="name" required="1" />
         <field name="diagrec_component" />

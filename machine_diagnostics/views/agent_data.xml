@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-
   <record id="agent_data_view_tree" editable="bottom"  model="ir.ui.view">
     <field name="name">agent.data.tree</field>
     <field name="model">agent.data</field>
     <field name="arch" type="xml">
-      <tree string="Dados do Agente" default_order="age_last_update desc, age_serial_number">
+      <tree string="Dados do Agente" default_order="age_last_check desc, age_serial_number">
         <field name="name" required="1" widget="handle"/>
         <field name="age_attribute" />
         <field name="age_value" />

@@ -23,12 +23,9 @@
               <field name="name" required="1"/>
             </h1>
           </div>
-
-          <font color="purple" modifiers="{}">
-          	<group>
-          		<field name="notediag_records_id" string="Registros"/>
-          	</group>
-          </font>
+          <group>
+          	  <field name="notediag_records_id" string="Registros"/>
+          </group>
         </sheet>
       </form>
     </field>
@@ -43,7 +40,7 @@
 
 
   <menuitem id="menu_root_machine_diagnostics"
-    name="Prontuário de Máquinas"
+    name="Prontuário"
     web_icon="machine_diagnostics,static/description/diagnostics.png"
     sequence="1"/>
 

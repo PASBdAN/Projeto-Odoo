@@ -13,5 +13,7 @@ class AgentData(models.Model):
     age_value = fields.Char(
         string="Valor", )
 
-    age_last_change = fields.Datetime(string="Última Alteração")
-    age_last_check = fields.Datetime(string="Última Verificação", )
+    age_last_change = fields.Datetime(
+        string="Última Alteração")
+    age_last_check = fields.Datetime(
+        string="Última Verificação", )

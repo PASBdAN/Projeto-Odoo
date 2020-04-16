@@ -6,13 +6,13 @@
     'description': "",
     'author': "Redmaxx",
     'website': "http://www.redmaxx.com.br",
-    'category': 'stock',
+    'category': '',
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'contributors': [
         'Andrea Monicque dos Santos Silva <amonicquesantos@gmail.com>',
     ],
-    'depends': ['stock'],
+    'depends': ['base'],
     'data': [
         'views/notebook_diagnostics.xml',
         'views/diagnostic_records.xml',
