@@ -14,8 +14,8 @@
     ],
     'depends': ['sale'],
     'data': [
-        'views/diagnostic_records.xml',
         'views/agent_data.xml',
+        'views/diagnostic_records.xml',
         'data/res_group.xml',
         'security/ir.model.access.csv'],
     'installable': True,

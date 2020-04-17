@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class AgentData(models.Model):
@@ -24,8 +24,9 @@ class AgentData(models.Model):
         string="Última Verificação",
         required=True)
 
-    def get_agent_data(self, diagnostic_list):
-        for attr in diagnostic_list:
+    @api.model
+    def get_agent_data(self, payload):
+        for attr in payload:
             domain = [
                 ("name", "=", attr["name"]),
                 ("age_deviceid", "=", attr["age_deviceid"]),
@@ -39,7 +40,6 @@ class AgentData(models.Model):
                 date = attr["age_last_check"]  # Verificar o formado da data
                 register_line.sudo().write({"age_last_check": date})
             else:
-                # Verificar o formado da data
                 date_register = attr['age_register_date']
                 date_last_check = attr['age_last_check']
 
@@ -52,3 +52,4 @@ class AgentData(models.Model):
                     'age_last_check': date_last_check,
                 }
                 self.sudo().create(vals)
+        return True
