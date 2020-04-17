@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-  <record id="agent_data_view_tree" editable="bottom"  model="ir.ui.view">
+  <record id="agent_data_view_tree" model="ir.ui.view">
     <field name="name">agent.data.tree</field>
     <field name="model">agent.data</field>
     <field name="arch" type="xml">
-      <tree string="Dados do Agente" default_order="age_last_check desc, age_serial_number">
-        <field name="name" required="1" widget="handle"/>
+      <tree string="Dados do Agente" >
+        <field name="name" />
+        <field name="age_deviceid" />
         <field name="age_attribute" />
-        <field name="age_value" />
-        <field name="age_last_change" />
+        <field name="age_attribute_value" />
+        <field name="age_register_date" />
         <field name="age_last_check" />
       </tree>
     </field>
   </record>
 
+<!-- default_order="age_last_check desc, age_serial_number" -->
+
   <record id="agent_data_action_form" model="ir.actions.act_window">
     <field name="name">Dados do Agente</field>
     <field name="res_model">agent.data</field>
     <field name="view_mode">tree</field>
-    <field name="help" type="html"></field>
   </record>
 
+  <menuitem id="menu_root_machine_diagnostics"
+    name="Prontuário"
+    web_icon="machine_diagnostics,static/description/diagnostics.png"
+    sequence="1"/>
 
   <menuitem id="menu_agent_data"
     name="Dados do Agente"
     parent="menu_root_machine_diagnostics"
-    action="declaracao_importacao_action_form"
+    action="agent_data_action_form"
     sequence="4"/>
 
 

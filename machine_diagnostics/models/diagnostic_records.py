@@ -6,43 +6,26 @@ class DiagnosticRecords(models.Model):
     _name = "diagnostic.records"
     _description = "Registros de Prontuário"
 
-
-    name= fields.Char(
-        string="Id Componente", )
+    name = fields.Char(
+        string="Número de Série", )
     diagrec_component = fields.Char(
         string="Componente", )
     diagrec_property = fields.Char(
         string="Propriedade", )
-    diagrec_description = fields.Char(
+    diagrec_property_value = fields.Char(
         string="Descrição", )
-
-    diagrec_last_change = fields.Datetime(
-        string="Última Alteração")
+    diagrec_register_date = fields.Datetime(
+        string="Data Cadastro")
     diagrec_last_check = fields.Datetime(
         string="Última Verificação", )
+    diagrec_deviceid = fields.Char(
+        string="ID Componente", )
+    agent_data_id = fields.Many2one(
+        string="Agent Data",
+        comodel_name="agent.data", )
 
-
-
-    diagrec_serial_number = fields.Many2one(
-        string="Número de Série",
-        comodel_name="notebook.diagnostics",
-        ondelete="restrict")
-
-    diagrec_product = fields.Many2one(
-        string="Produto",
-        comodel_name="product.product",
-        domain="[('name', 'like', notebook)]",
-        ondelete="set null")
-
-
-class DiagnosticsRecordsLines(models.Model):
-    _name = "diagnostics.records.line"
-
-    diagnostics_id = fields.Many2one(
-        string="Diagnostics",
-        comodel_name="notebook.diagnostics")
-
-    notediag_records_id = fields.Many2one(
-        string="Registros",
-        comodel_name="diagnostic.records",
-        ondelete="restrict")
+    # diagrec_product = fields.Many2one(
+    #     string="Produto",
+    #     comodel_name="product.product",
+    #     # domain="[('name', 'like', notebook)]",
+    #     ondelete="set null")

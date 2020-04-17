@@ -12,11 +12,11 @@
     'contributors': [
         'Andrea Monicque dos Santos Silva <amonicquesantos@gmail.com>',
     ],
-    'depends': ['base'],
+    'depends': ['sale'],
     'data': [
-        'views/notebook_diagnostics.xml',
         'views/diagnostic_records.xml',
         'views/agent_data.xml',
+        'data/res_group.xml',
         'security/ir.model.access.csv'],
     'installable': True,
     'application': False,
