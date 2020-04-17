@@ -37,19 +37,15 @@ class AgentData(models.Model):
 
             # TODO: escrever no banco por CR
             if register_line:
-                date = attr["age_last_check"]  # Verificar o formado da data
+                date = attr["age_last_check"]
                 register_line.sudo().write({"age_last_check": date})
             else:
-                date_register = attr['age_register_date']
-                date_last_check = attr['age_last_check']
-
                 vals = {
                     'name': attr["name"],
                     'age_deviceid': attr['age_deviceid'],
                     'age_attribute': attr['age_attribute'],
                     'age_attribute_value': attr['age_attribute_value'],
-                    'age_register_date': date_register,
-                    'age_last_check': date_last_check,
-                }
+                    'age_register_date': attr['age_register_date'],
+                    'age_last_check': attr['age_last_check']}
                 self.sudo().create(vals)
         return True
