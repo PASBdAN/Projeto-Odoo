@@ -35,6 +35,13 @@ class AgentData(models.Model):
                 ]
             register_line = self.search(domain, limit=1)
 
+            if attr["age_attribute"] == "Memória Capacidade":
+                age_attribute_value = int(attr["age_attribute_value"])
+                age_attribute_value /= 1073741824
+                age_attribute_value = str(age_attribute_value) + "G"
+            else:
+                age_attribute_value = attr["age_attribute_value"]
+
             # TODO: escrever no banco por CR
             if register_line:
                 date = attr["age_last_check"]
@@ -44,7 +51,7 @@ class AgentData(models.Model):
                     'name': attr["name"],
                     'age_deviceid': attr['age_deviceid'],
                     'age_attribute': attr['age_attribute'],
-                    'age_attribute_value': attr['age_attribute_value'],
+                    'age_attribute_value': age_attribute_value,
                     'age_register_date': attr['age_register_date'],
                     'age_last_check': attr['age_last_check']}
                 self.sudo().create(vals)
